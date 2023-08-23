@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS Item(itemNumber INTEGER PRIMARY KEY NOT NULL, itemRoom INTEGER NOT NULL, itemName TEXT NOT NULL, itemDescription TEXT NOT NULL);
+INSERT OR IGNORE INTO Item(itemNumber, itemRoom, itemName, itemDescription) VALUES(1, 17, 'Flame thrower', 'A device that projects a controlled stream of ignited fuel.');
+INSERT OR IGNORE INTO Item(itemNumber, itemRoom, itemName, itemDescription) VALUES(2, 23, 'Water hose', 'A flexible tube made of durable materials designed to convey pressurized water from a source to a specific location.');
+INSERT OR IGNORE INTO Item(itemNumber, itemRoom, itemName, itemDescription) VALUES(3, 11, 'Vacuum', 'An electrical appliance that creates suction to remove dirt, dust, and debris.');
+INSERT OR IGNORE INTO Item(itemNumber, itemRoom, itemName, itemDescription) VALUES(4, 5, 'Pick axe', 'A hand tool used for breaking up hard materials like rock or concrete');
+INSERT OR IGNORE INTO Item(itemNumber, itemRoom, itemName, itemDescription) VALUES(5, 29, 'Flashlight', 'A portable handheld device used to provide illumination in dark or low light conditions.');
+INSERT OR IGNORE INTO Item(itemNumber, itemRoom, itemName, itemDescription) VALUES(6, 3, 'Crowbar', 'A versatile tool used for leveraging, prying, and pulling objects apart.');
