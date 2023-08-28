@@ -39,7 +39,7 @@ public class UsersDB {
         SQLiteDB sdb = new SQLiteDB(dbName);
         try {
             System.out.println("Enter a username: ");
-            String username = input.nextLine();
+            String username = input.nextLine().toLowerCase();
             String sql = "SELECT username FROM users WHERE username = '" + username + "';";
             ResultSet rs = sdb.queryDB(sql);
 
@@ -67,7 +67,7 @@ public class UsersDB {
         SQLiteDB sdb = new SQLiteDB(dbName);
         try {
             System.out.println("Enter a username: ");
-            String username = input.nextLine();
+            String username = input.nextLine().toLowerCase();
             String sql = "SELECT username FROM users WHERE username = '" + username + "';";
             ResultSet rs = sdb.queryDB(sql);
 
@@ -84,7 +84,7 @@ public class UsersDB {
                 }
             } else {
                 System.out.println("username does not exist");
-                newUser();
+                gameLogin();
             }
         }catch(RuntimeException e){
             e.printStackTrace();

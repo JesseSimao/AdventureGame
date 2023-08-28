@@ -112,10 +112,10 @@ public class ConsoleUI {
 
         while(play){
 
-            while(!puzzle.isSolved()){
-                gameController.getPuzzleData(player.getCurrentRoom().getRoomNumber());
-
-            }
+//            while(!puzzle.isSolved()){
+//                gameController.getPuzzleData(player.getCurrentRoom().getRoomNumber());
+//
+//            }
 
 
             System.out.println("Enter 1. if you want to move.");
@@ -208,7 +208,7 @@ public class ConsoleUI {
     private void viewRooms() {
         try {
             System.out.println("Fetching room data...");
-            for(int i = 1; i < getAllRooms().size();i++)
+            for(int i = 1; i <= getAllRooms().size();i++)
             {
                 String roomData = gameController.getRoomData(i);
                 System.out.println(roomData.toString());

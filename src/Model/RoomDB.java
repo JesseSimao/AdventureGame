@@ -111,43 +111,7 @@ public class RoomDB{
             }
     }
 
-
-
-
-    //another method to put all rooms in array.
-//    public void buildRoomArray() throws SQLException, ClassNotFoundException {
-//        String dbName = "Game.db";
-//        SQLiteDB sdb = new SQLiteDB(dbName);
-//        try {
-//            // Execute the query
-//            String query = "SELECT * FROM your_table";
-//            ResultSet rs = sdb.queryDB(query);
-//
-//            // Create an ArrayList to store the retrieved records
-//            ArrayList<Room> rooms = new ArrayList<Room>();
-//
-//            // Iterate over the result set and populate the ArrayList
-//            while (rs.next()) {
-//                String roomNumber = rs.getString("roomNumber");
-//                String roomName = rs.getString("roomName");
-//                String roomDescription = rs.getString("roomDescription");
-//                String roomExits = rs.getString("exits");
-//                Room room = new Room(Integer.parseInt(roomNumber), roomName, roomDescription,roomExits);
-//                rooms.add(room);
-//            }
-//
-//            // Print the retrieved records
-//            for (Room room : rooms) {
-//                System.out.println(room);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        } catch (GameException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-//}
-
-
 }
+
+
 
