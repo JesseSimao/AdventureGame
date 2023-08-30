@@ -84,6 +84,7 @@ public class ConsoleUI {
 
     private void playGame() throws SQLException, ClassNotFoundException
     {
+        int INITIAL_ROOM = 1;
         //create player object
         Player player = new Player();
 
@@ -96,32 +97,32 @@ public class ConsoleUI {
         //create a room object
         Room room = new Room();
 
-        // Set the current room for the player
-        Room initialRoom = Room.getRoom(1);
-        player.setCurrentRoom(initialRoom);
+
         // Game logic goes here
         boolean play = true;
         Scanner input = new Scanner(System.in);
 
-        //starting first room
-        System.out.println(gameController.roomDesc(1));
-        System.out.println("");
 
-        player.setCurrentRoom(initialRoom);
-        initialRoom.setVisited(true);
 
         while(play){
 
-//            while(!puzzle.isSolved()){
-//                gameController.getPuzzleData(player.getCurrentRoom().getRoomNumber());
-//
-//            }
+
+            // Set the current room and the room for the player
+            Room startRoom = Room.getRoom(INITIAL_ROOM);
+            player.setCurrentRoom(Room.getRoom(INITIAL_ROOM));
+            System.out.println(startRoom.displayRoom());
+            startRoom.setVisited(true);
+            System.out.println();
+
+            //System.out.println(gameController.getPuzzleData());
 
 
             System.out.println("Enter 1. if you want to move.");
             System.out.println("Enter 2. to use an item command.");
             System.out.println("");
             String userInput = input.nextLine();
+
+
             try
             {
                 int num = Integer.parseInt(userInput);
@@ -222,7 +223,7 @@ public class ConsoleUI {
     private void viewItems() {
         try {
             System.out.println("Fetching item data...");
-            for(int i = 1; i < getAllItems().size(); i++)
+            for(int i = 1; i <= getAllItems().size(); i++)
             {
                 String itemData = gameController.getItemData(i);
                 System.out.println(itemData.toString());
@@ -238,7 +239,7 @@ public class ConsoleUI {
         try
         {
             System.out.println("Fetching monsters data...");
-            for(int i = 1; i < getAllMonsters().size(); i++)
+            for(int i = 1; i <= getAllMonsters().size(); i++)
             {
                 String monsterData = gameController.getMonsterData(i);
                 System.out.println(monsterData.toString());

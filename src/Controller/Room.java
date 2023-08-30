@@ -194,4 +194,9 @@ public class Room
                 ", exits='" + exits + '\'' +
                 '}';
     }
+
+    //only displays the room name and description for game purpose
+    public String displayRoom(){
+        return roomName + "\n" + roomDescription;
+    }
 }

@@ -88,6 +88,9 @@ public class UsersDB {
             }
         }catch(RuntimeException e){
             e.printStackTrace();
+        }catch (GameException e){
+            newUser();
+            return;
         }
 
     }

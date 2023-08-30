@@ -64,16 +64,14 @@ public class GameController {
     }
 
     public void getPuzzleData(int roomNumber) throws SQLException, ClassNotFoundException {
-        PuzzleDB pdb = new PuzzleDB();
+       // PuzzleDB pdb = new PuzzleDB();
         Puzzle puz = new Puzzle();
         if(puz.getPuzzleRoom() == roomNumber){
             puzzleDesc(roomNumber);
         }
-        else{
+        else {
             System.out.println("No puzzles found in this room");
-
         }
-
     }
 
 

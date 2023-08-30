@@ -70,14 +70,13 @@ public class Puzzle {
 
     public boolean isSolved(){ return isSolved; }
 
-    public void setSolved(boolean solved){ isSolved = solved; }
+    public void setSolved(boolean solved){ isSolved = false;}
 
     public ArrayList<Puzzle> getAllPuzzles() throws SQLException, ClassNotFoundException
     {
         PuzzleDB pdb = new PuzzleDB();
         return pdb.getAllPuzzles();
     }
-
 
     public static Puzzle getPuzzle(int puzzleRoom) throws SQLException, ClassNotFoundException {
         PuzzleDB pdb = new PuzzleDB();
@@ -93,6 +92,8 @@ public class Puzzle {
                 ", puzzleSolution='" + puzzleSolution + '\'' +
                 '}';
     }
+
+
 }
 
 
