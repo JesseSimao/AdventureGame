@@ -9,10 +9,14 @@ import java.util.Scanner;
 
 public class ConsoleUI {
     private GameController gameController;
+    private Command command;
+
+    private ArrayList<Integer> roomNumbers;
 
     public ConsoleUI() {
         gameController = new GameController();
     }
+
 
     private ArrayList<String> getAllRooms() throws SQLException, ClassNotFoundException {
         return gameController.getAllRoomsData();
@@ -101,17 +105,14 @@ public class ConsoleUI {
         // Game logic goes here
         boolean play = true;
         Scanner input = new Scanner(System.in);
-
+        player.setCurrentRoom(Room.getRoom(INITIAL_ROOM));
 
 
         while(play){
 
 
             // Set the current room and the room for the player
-            Room startRoom = Room.getRoom(INITIAL_ROOM);
-            player.setCurrentRoom(Room.getRoom(INITIAL_ROOM));
-            System.out.println(startRoom.displayRoom());
-            startRoom.setVisited(true);
+            System.out.println(player.getCurrentRoom().displayRoom());
             System.out.println();
 
             //System.out.println(gameController.getPuzzleData());
@@ -133,37 +134,13 @@ public class ConsoleUI {
                         System.out.println("Enter the direction you want to go:");
                         String direction = input.nextLine();
 
-                        try {
-                            Room currentRoom = player.getCurrentRoom();
-                            int destination = currentRoom.validDirection(direction);
+                        if(Room.getRoom(player.getCurrentRoomNum()).getExits().equalsIgnoreCase("up") ) {
+                            player.setCurrentRoom(Room.getRoom(player.getCurrentRoomNum() + 1));
+                            player.incrementRoomNum();
 
-                            if (destination != -1)
-                            {
-                                Room nextRoom = Room.getRoom(destination);
-                                if(nextRoom.isVisited() == false)
-                                {
-                                    System.out.println("This is your first time entering this room.");
-
-                                }
-                                else
-                                {
-                                    System.out.println("You have already been in this room.");
-                                    nextRoom.setVisited(true);
-                                }
-
-                                player.setCurrentRoom(nextRoom);
-                                System.out.println(nextRoom.getRoomDescription());
-                            }
-                            else
-                            {
-                                System.out.println("Invalid direction. Please try again.");
-                            }
-
-                        }
-
-                        catch (GameException | SQLException | ClassNotFoundException e)
-                        {
-                            System.out.println(e.getMessage());
+                        } else if(Room.getRoom(player.getCurrentRoomNum()).getExits().equalsIgnoreCase("down") ) {
+                            player.setCurrentRoom(Room.getRoom(player.getCurrentRoomNum() - 1));
+                            player.DecrementRoomNum();
                         }
                         break;
                     case 2:
@@ -174,28 +151,6 @@ public class ConsoleUI {
                         String itemCmd = input.nextLine();
                         //gameController.itemCommand(itemCmd);
                         break;
-
-
-
-//                    System.out.println("Enter the direction you want to go:");
-//                    String direction = input.nextLine().toLowerCase();
-//
-//                    try {
-//                        Room currentRoom = player.getCurrentRoom();
-//                        Map<String, Integer> exitsMap = currentRoom.getExitsMap();
-//
-//                        if (exitsMap.containsKey(direction)) {
-//                            int destination = exitsMap.get(direction);
-//                            Room nextRoom = Room.getRoom(destination);
-//                            player.setCurrentRoom(nextRoom);
-//                            System.out.println(nextRoom.getRoomDescription());
-//                        } else {
-//                            System.out.println("Invalid direction. Please try again.");
-//                        }
-//                    } catch (SQLException | ClassNotFoundException e) {
-//                        System.out.println(e.getMessage());
-//                    }
-//                    break;
                 }
 
             }
@@ -206,6 +161,8 @@ public class ConsoleUI {
         }
     }
 
+
+    //all the view functions to make sure all the data is there on the start screen
     private void viewRooms() {
         try {
             System.out.println("Fetching room data...");
@@ -252,6 +209,7 @@ public class ConsoleUI {
         }
     }
 
+    //for future use of playing the game
     private void helpCommands()
     {
         try

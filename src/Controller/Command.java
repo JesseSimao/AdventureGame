@@ -18,7 +18,7 @@ public class Command {
     public ConsoleUI consoleUI = new ConsoleUI();
 
 
-    private int validateCommand(String cmdLine) throws GameException {
+    public int validateCommand(String cmdLine) throws GameException {
         String cmd = cmdLine.toLowerCase();
         if (VALID_DIRECTIONS.contains(cmd)) {
             return 1; // Movement commands

@@ -185,6 +185,7 @@ public class Room
 
 
 
+    //used more to check the array data
     @Override
     public String toString() {
         return "Room{" +

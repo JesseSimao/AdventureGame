@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import static Controller.Room.getRoom;
 
 public class GameController {
+
+    //builds the file of the game database
     public void start() throws GameException {
         File dbFile = new File("Game.db");
         if (!dbFile.exists()) {
@@ -18,6 +20,7 @@ public class GameController {
         }
     }
 
+    //retrieves a particular room data
     public String getRoomData(int roomNumber) throws SQLException, ClassNotFoundException {
         Room rm = new Room();
         rm = getRoom(roomNumber);

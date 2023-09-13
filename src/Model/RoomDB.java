@@ -18,6 +18,14 @@ public class RoomDB{
         //empty constructor
     }
 
+    public static RoomDB getInstance() throws GameException, SQLException, ClassNotFoundException {
+        if (instance == null)
+        {
+            instance = new RoomDB();
+        }
+        return instance;
+    }
+
     public int getNextRoomID() throws SQLException, NullPointerException {
         SQLiteDB sdb = null;
         try {
@@ -64,13 +72,7 @@ public class RoomDB{
         return rooms;
     }
 
-    public static RoomDB getInstance() throws GameException, SQLException, ClassNotFoundException {
-        if (instance == null)
-        {
-            instance = new RoomDB();
-        }
-        return instance;
-    }
+
 
     public Map<String, Integer> getExitsFromRoom(int roomId) throws SQLException, ClassNotFoundException {
         SQLiteDB sdb = new SQLiteDB();

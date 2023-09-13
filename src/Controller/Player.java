@@ -8,11 +8,13 @@ import java.util.List;
 
 public class Player {
     private Room currentRoom;
+    private int currentRoomNum;
     private List<Item> inventory;
     private Player player;
 
     public Player() throws SQLException, ClassNotFoundException {
         currentRoom = Room.getRoom(1);
+        currentRoomNum = Room.getRoom(1).getRoomNumber();
         inventory = new ArrayList<>(); // Should start empty
     }
 
@@ -21,8 +23,23 @@ public class Player {
         return currentRoom;
     }
 
+    public int getCurrentRoomNum() {
+        return currentRoomNum;
+    }
+
+    public int incrementRoomNum() {
+        return currentRoomNum++;
+    }
+
+    public int DecrementRoomNum() {
+        return currentRoomNum++;
+    }
+
+
+
     public void setCurrentRoom(Room currentRoom)
     {
+        this.currentRoomNum = currentRoom.getRoomNumber();
         this.currentRoom = currentRoom;
     }
 
