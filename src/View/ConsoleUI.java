@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class ConsoleUI {
     private GameController gameController;
-    private Command command;
+    private Command cmd;
 
     private ArrayList<Integer> roomNumbers;
 
@@ -133,14 +133,10 @@ public class ConsoleUI {
                     case 1:
                         System.out.println("Enter the direction you want to go:");
                         String direction = input.nextLine();
-
-                        if(Room.getRoom(player.getCurrentRoomNum()).getExits().equalsIgnoreCase("up") ) {
-                            player.setCurrentRoom(Room.getRoom(player.getCurrentRoomNum() + 1));
-                            player.incrementRoomNum();
-
-                        } else if(Room.getRoom(player.getCurrentRoomNum()).getExits().equalsIgnoreCase("down") ) {
-                            player.setCurrentRoom(Room.getRoom(player.getCurrentRoomNum() - 1));
-                            player.DecrementRoomNum();
+                        try {
+                            cmd.moveCommand(direction);
+                        } catch (GameException | NumberFormatException e) {
+                            throw new RuntimeException(e);
                         }
                         break;
                     case 2:

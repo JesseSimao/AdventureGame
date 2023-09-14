@@ -31,8 +31,7 @@ public class Player {
         return currentRoomNum++;
     }
 
-    public int DecrementRoomNum() {
-        return currentRoomNum++;
+    public int DecrementRoomNum() {return currentRoomNum++;
     }
 
 
